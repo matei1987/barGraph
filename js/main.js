@@ -1,51 +1,83 @@
 $(document).ready(function() {
-    $("div.bar").each(function(index){
-        index = index+1;
-        $(this).after("<p class = 'xField' id = 'f" + index+"'> Field" + index + " </p> ");
-    });
-
-    $("#submit").click(function(evt){
-        go(nums);
-        i = 0;
-        start();
-    });
+    
+  
+    setUp();
+    go(nums);
     start();
 
 });
 
-/*
-function go(nums){
-    var inputs = $(".inputBox");
-    for (var i=0;i<inputs.length;i++){
-        nums[i]=parseInt(inputs[i].val;
-    }
- }
-*/
- function go(nums){
-    $(".inputBox").each(function(index){
-        nums[index] = parseInt($(this).val());
-    });
- }
 
-
-
+var l = 0;
 var nums = [];
-var bars = $('.bar');
 var i = 0;
 var heightData = []
-var colorList = ['#b20e0f','#e22516','#e24616','#e26c16','#e29316','#e2bb16','#dfd616','#b6d616','#98d616','#80df16','#5ddf16','#32df16','#00c316','#00ab16'];
+var colorList = ['#b20e0f', '#e22516', '#e24616', '#e26c16', '#e29316', '#e2bb16', '#dfd616', '#b6d616', '#98d616', '#80df16', '#5ddf16', '#32df16', '#00c316', '#00ab16'];
 var colorList = colorList.reverse();
 
-function roundTo(number, to) {
-    return Math.round(number * to) / to;
+$("#submit").click(function(evt) {
+    cleanUp();
+    setUp();
+    nums = [];
+    go(nums);
+    i = 0;
+    start();
+});
+
+function cleanUp () {
+    $(".bar").remove();
+    $(".xField").remove();
 }
 
-function convertToHeights(nums){
+function setUp(){
+    var perc = 0;
+    //$("#graph").append("<div id = 'bar1' class = 'bar'></div>");
+    l = parseInt($("#number").val());
+      if (isNaN(l) || l == 0){
+        l = 50;
+    };
+    for (var i = 0; i < l; i++) {
+        var j = i;
+        perc =  .5 + i * (1/(l/99));
+
+        $("#graph").append("<div id = 'bar" + j + "' class = 'bar'></div>");
+        $(".bar").last().css({marginLeft: perc + '%', width: 94/l+'%'});
+    };
+
+
+
+    $("div.bar").each(function(index) {
+        index++;
+        perc = (.5+index * (1/(l/99)));
+        $(this).append("<p class = 'xField' id = 'f" + index + "'> Field" + index + " </p> ");
+  
+        
+
+    });
+
+}
+
+function start() {
+    heightData = convertToHeights(nums);
+    setTimeout(function() {
+        grow(heightData[i], $('.bar')[i]);
+
+        if (i >= $('.bar').length) {
+            return;
+        } else {
+            i++;
+            return start();
+        };
+    }, 25);
+}
+
+
+function convertToHeights(nums) {
     var heights = []
-    var max = Math.max.apply(null,nums);
-    for (var i=0;i<nums.length;i++){
-        heights.push((Math.round(($("#graph").height()/(max/nums[i]))))-10);
-        if (heights[i] <=6) heights[i]=6;
+    var max = Math.max.apply(null, nums);
+    for (var i = 0; i < nums.length; i++) {
+        heights.push((Math.round(($("#graph").height() / (max / nums[i])))) - 10);
+        if (heights[i] <= 6) heights[i] = 6;
     }
     return heights;
 }
@@ -53,29 +85,21 @@ function convertToHeights(nums){
 
 
 function grow(size, elem) {
-    
-    var barColor = Math.round((colorList.length-1)/(Math.max.apply(null,heightData)/size));
-    var finCol = colorList[barColor]; 
+
+    var barColor = Math.round((colorList.length - 1) / (Math.max.apply(null, heightData) / size));
+    var finCol = colorList[barColor];
     $(elem).animate({
         height: size,
         opacity: '1.0',
         backgroundColor: finCol
-    }, 1000);//.css("background-color",colorList.reverse()[barColor-1]);
+    }, 300);
 
 
 }
 
+function go(nums) {
 
-function start() {
-    heightData = convertToHeights(nums);
-    setTimeout (function(){
-        grow(heightData[i], bars[i]);
-
-        if (i >= bars.length) {
-            return;
-        } else {
-            i++;
-            return start();
-        };
-    }, 100);
+    for (var i = 0; i < $(".bar").length; i++) {
+        nums[i] = Math.floor((Math.random() * 100));
+    }
 }
