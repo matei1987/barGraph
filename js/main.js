@@ -1,9 +1,12 @@
 $(document).ready(function() {
-    
-  
+
+
     setUp();
+
     go(nums);
+
     start();
+
 
 });
 
@@ -24,36 +27,31 @@ $("#submit").click(function(evt) {
     start();
 });
 
-function cleanUp () {
+
+function cleanUp() {
     $(".bar").remove();
     $(".xField").remove();
 }
 
-function setUp(){
+function setUp() {
     var perc = 0;
     //$("#graph").append("<div id = 'bar1' class = 'bar'></div>");
     l = parseInt($("#number").val());
-      if (isNaN(l) || l == 0){
+    if (isNaN(l) || l == 0) {
         l = 50;
     };
     for (var i = 0; i < l; i++) {
         var j = i;
-        perc =  .5 + i * (1/(l/99));
+        perc = .5 + i * (1 / (l / 99));
 
         $("#graph").append("<div id = 'bar" + j + "' class = 'bar'></div>");
-        $(".bar").last().css({marginLeft: perc + '%', width: 94/l+'%'});
+        $(".bar").last().css({
+            marginLeft: perc + '%',
+            width: 94 / l + '%'
+        });
     };
 
 
-
-    $("div.bar").each(function(index) {
-        index++;
-        perc = (.5+index * (1/(l/99)));
-        $(this).append("<p class = 'xField' id = 'f" + index + "'> Field" + index + " </p> ");
-  
-        
-
-    });
 
 }
 
@@ -69,6 +67,7 @@ function start() {
             return start();
         };
     }, 25);
+
 }
 
 
@@ -77,22 +76,56 @@ function convertToHeights(nums) {
     var max = Math.max.apply(null, nums);
     for (var i = 0; i < nums.length; i++) {
         heights.push((Math.round(($("#graph").height() / (max / nums[i])))) - 10);
-        if (heights[i] <= 6) heights[i] = 6;
+
     }
     return heights;
 }
 
+function labels() {
+    $("div.bar").each(function(index) {
+        index++;
+        $(this).append("<p class = 'xField' id = 'f" + index + "'> Field" + index + " </p> ");
 
+
+
+    });
+}
 
 function grow(size, elem) {
 
     var barColor = Math.round((colorList.length - 1) / (Math.max.apply(null, heightData) / size));
     var finCol = colorList[barColor];
+    var diff = 0;
     $(elem).animate({
         height: size,
         opacity: '1.0',
-        backgroundColor: finCol
+        backgroundColor: finCol,
     }, 300);
+
+    $({
+        someValue: 0
+    }).animate({
+        someValue: (size / 600) * 100
+    }, {
+        duration: 1000,
+        easing: 'swing', // can be anything
+        step: function() { // called on every step
+
+            $(elem).text(Math.ceil(this.someValue));
+            if (this.someValue <= 5) {
+                $(elem).text('')
+            };
+        }
+    });
+    if ($(elem).width() > $('#graph').height() / 15) {
+        $(elem).css({
+            fontSize: '29px'
+        })
+    } else {
+        $(elem).css({
+            fontSize: ($(elem).width() - 6)
+        })
+    }
 
 
 }
