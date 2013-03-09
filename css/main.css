@@ -14,10 +14,10 @@
 
 
 .bar {
-    -webkit-box-shadow: 4px 0px 8px rgba(50, 50, 50, 0.41);
+    -webkit-box-shadow: 2px 0px 3px rgba(50, 50, 50, 0.41);
     -webkit-border-top-right-radius: 3px;
     -webkit-border-top-left-radius: 3px;
-    -moz-box-shadow: 4px 0px 8px rgba(50, 50, 50, 0.41);
+    -moz-box-shadow: 2px 0px 3px rgba(50, 50, 50, 0.41);
     -moz-border-radius-topright: 3px;
     -moz-border-radius-topleft: 3px;
     background-color: #dfd616;
@@ -25,17 +25,21 @@
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     bottom: 0;
-    box-shadow: 4px 0px 8px rgba(50, 50, 50, 0.41);
-    height: 250px;
+    box-shadow: 2px 0px 3px rgba(50, 50, 50, 0.41);
+    color: #edf1f6;
+    font-size: .9em;
+    font-weight: 100;
+    height: 50px;
     margin: 0 .5%;
-    opacity: .2;
+    opacity: 0;
     position: absolute;
     text-align: center;
-    color: #edf1f6;
     text-shadow: -1px -1px 1px #787a7c;
-    font-weight: 100;
-    font-size: .9em;
+    cursor: crosshair;
 }
+
+
+
 
 .xField {
     -webkit-transition: all .15s ease-in-out;
@@ -47,12 +51,12 @@
     -moz-transition: all .15s ease-in-out;
     -moz-transform: rotate(65deg);
     bottom: -50px;
-    cursor: pointer;
     color: black;
+    cursor: pointer;
     font-weight: 100;
-    text-align: center;
-    position: absolute;
     margin: 0 .5%;
+    position: absolute;
+    text-align: center;
     transform: rotate(90deg);
     transition: all .15s ease-in-out;
 }
@@ -77,10 +81,7 @@
     width: 120px;
 }
 
-#submit:hover {
-
-    width: 300px;
-}
+#submit:hover { width: 300px; }
 #go {
     color: #e7e9eb;
     font-size: 2.5em;
@@ -93,13 +94,10 @@
 
 #mystery {
     -webkit-transition: all .2s ease-in-out;
-    
+    -webkit-border-bottom-right-radius: 5px;
     -o-transition: all .2s ease-in-out;
     -ms-transition: all .2s ease-in-out;
-
     -moz-transition: all .2s ease-in-out;
-        transition: all .2s ease-in-out;
-        -webkit-border-bottom-right-radius: 5px;
     -moz-border-radius-bottomright: 5px;
     background-color: #1a44ff;
     border-bottom-right-radius: 5px;
@@ -109,14 +107,11 @@
     position: relative;
     right: 0;
     top: 0;
-
+    transition: all .2s ease-in-out;
     width: 120px;
 }
 
-#mystery:hover {
-
-    width: 300px;
-}
+#mystery:hover { width: 300px; }
 
 #no {
     color: #e7e9eb;
@@ -129,37 +124,29 @@
 }
 
 #number {
-    margin-left: 46.8%;
- 
-    overflow: hidden;
-    position: absolute;
-    text-align: center;
-    width: 40px;
+    -webkit-transition: all .2s ease-in-out;
+    -webkit-border-bottom-right-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    -o-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -moz-border-radius-bottomright: 10px;
+    -moz-border-radius-bottomleft: 10px;
     background-color: #1a44ff;
-
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     color: #eaeef3;
     font-size: 3em;
     height: 120px;
+    margin-left: 46.8%;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    transition: all .2s ease-in-out;
     width: 120px;
-
-    -webkit-border-bottom-right-radius: 10px;
--webkit-border-bottom-left-radius: 10px;
--moz-border-radius-bottomright: 10px;
--moz-border-radius-bottomleft: 10px;
-border-bottom-right-radius: 10px;
-border-bottom-left-radius: 10px;
-
-    -webkit-transition: all .2s ease-in-out;
-    
-    -o-transition: all .2s ease-in-out;
-    -ms-transition: all .2s ease-in-out;
-
-    -moz-transition: all .2s ease-in-out;
-        transition: all .2s ease-in-out;
+  
 }
-#number:hover{
-    height: 150px;
-}
+#number:hover { height: 150px; }
 
 
 
@@ -392,57 +379,57 @@ Modify as content requires.
 ========================================================================== */
 
 @media only screen and (min-width: 35em) {
-            /* Style adjustments for viewports that meet the condition */
+                /* Style adjustments for viewports that meet the condition */
 }
 
 @media print,
-            (-o-min-device-pixel-ratio: 5/4),
-            (-webkit-min-device-pixel-ratio: 1.25),
-            (min-resolution: 120dpi) { }
-        
-        /* ==========================================================================
-        Print styles.
-        Inlined to avoid required HTTP connection: h5bp.com/r
-        ========================================================================== */
-        
-        @media print {
-            box-shadow: none !important;
-            color: #000 !important; /* Black prints faster: h5bp.com/s */
-            text-shadow: none !important;
-            *: {background  transparent !important;
-        }
-        
-            a,
-            a:visited { text-decoration: underline; }
-        
-            a[href]:after { content: " (" attr(href) ")"; }
-        
-            abbr[title]:after { content: " (" attr(title) ")"; }
-        
-            /*
-            * Don't show links for images, or javascript/internal links
-            */
-        
-            .ir a:after,
-            a[href^="javascript:"]:after,
-            a[href^="#"]:after { content: ""; }
-        
-            pre,
-            blockquote { border: 1px solid #999; page-break-inside: avoid; }
-        
-            thead { display: table-header-group /* h5bp.com/t */; }
-        
-            tr,
-            img { page-break-inside: avoid; }
-        
-            img { max-width: 100% !important; }
-        
-            @page { margin: 0.5cm; }
-        
-            p,
-            h2,
-            h3 { orphans: 3; widows: 3; }
-        
-            h2,
-            h3 { page-break-after: avoid; }
+                (-o-min-device-pixel-ratio: 5/4),
+                (-webkit-min-device-pixel-ratio: 1.25),
+                (min-resolution: 120dpi) { }
+            
+            /* ==========================================================================
+            Print styles.
+            Inlined to avoid required HTTP connection: h5bp.com/r
+            ========================================================================== */
+            
+            @media print {
+                box-shadow: none !important;
+                color: #000 !important; /* Black prints faster: h5bp.com/s */
+                text-shadow: none !important;
+                *: {background  transparent !important;
+            }
+            
+                a,
+                a:visited { text-decoration: underline; }
+            
+                a[href]:after { content: " (" attr(href) ")"; }
+            
+                abbr[title]:after { content: " (" attr(title) ")"; }
+            
+                /*
+                * Don't show links for images, or javascript/internal links
+                */
+            
+                .ir a:after,
+                a[href^="javascript:"]:after,
+                a[href^="#"]:after { content: ""; }
+            
+                pre,
+                blockquote { border: 1px solid #999; page-break-inside: avoid; }
+            
+                thead { display: table-header-group /* h5bp.com/t */; }
+            
+                tr,
+                img { page-break-inside: avoid; }
+            
+                img { max-width: 100% !important; }
+            
+                @page { margin: 0.5cm; }
+            
+                p,
+                h2,
+                h3 { orphans: 3; widows: 3; }
+            
+                h2,
+                h3 { page-break-after: avoid; }
 }
