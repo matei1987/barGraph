@@ -5,11 +5,13 @@
     border-bottom: 4px solid #888888;
     border-left: 4px solid #888888;
     clear: both;
-    height: 500px;
-    margin: 0 auto;
+    height: 100%;
     opacity: .9;
-    position: relative;
+    position: fixed;
     width: 95%;
+    bottom: 0;
+    left: 2.5%;
+
 }
 
 
@@ -21,7 +23,7 @@
     -moz-border-radius-topright: 3px;
     -moz-border-radius-topleft: 3px;
     background-color: #dfd616;
-    border: 1px solid rgba(50,50,50,0.1);
+    border: 1px solid rgba(50,50,50,0.3);
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     bottom: 0;
@@ -29,7 +31,7 @@
     color: #edf1f6;
     font-size: .9em;
     font-weight: 100;
-    height: 50px;
+    height: 250px;
     margin: 0 .5%;
     opacity: 0;
     position: absolute;
